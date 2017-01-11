@@ -24,7 +24,7 @@ type ClassicRule struct {
 	sections map[string]ConfSection
 
 	general GeneralSection
-	rules []RuleRow
+	rules []*RuleRow
 }
 
 type ConfSection struct {
@@ -93,7 +93,7 @@ func (rule *ClassicRule) parseRule() {
 			pieces = append(pieces, strings.TrimSpace(block))
 		}
 		if len(pieces) == 3 {
-			rule.rules = append(rule.rules, RuleRow{
+			rule.rules = append(rule.rules, &RuleRow{
 				typo: pieces[0],
 				value: pieces[1],
 				action: pieces[2],
